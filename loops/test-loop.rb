@@ -9,7 +9,6 @@ live_loop :melody do
       play 58, amp: 0.2
       sleep 0.25
       play 54, amp: 0.3, env_curve: 2
-
       sleep 1
     end
   end
