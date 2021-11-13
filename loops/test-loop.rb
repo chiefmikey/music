@@ -9,7 +9,7 @@ live_loop :melody do
       play 58, amp: 0.2
       sleep 0.25
       play 54, amp: 0.3, env_curve: 2
-      
+
       sleep 1
     end
   end
@@ -64,7 +64,18 @@ live_loop :boom do
   sample :drum_bass_hard, amp: 0.8
 end
 
-wait 8
+wait 4
+
+sample :drum_cymbal_soft, amp: 0.2, rate: 0.9
+sleep 1
+sample :drum_cymbal_soft, amp: 0.2, rate: 0.9
+sleep 1
+sample :drum_cymbal_soft, amp: 0.2, rate: 0.9
+sleep 1
+sample :drum_cymbal_soft, amp: 0.2, rate: 0.9
+sleep 1
+
+wait 4
 
 live_loop :tick_tick do
   with_fx :slicer do
@@ -142,10 +153,24 @@ wait 8
 
 live_loop :hit do
   with_fx :krush, mix: 0.5 do
-    sample :sn_dub, amp: 0.5, rate: 0.9
-    sleep 1
+    sleep 0.5
+    sample :sn_dub, amp: 0.3, rate: 0.9
+    sleep 0.5
   end
 end
+
+wait 8
+
+live_loop :cym do
+  with_fx :krush, mix: 0.5 do
+    sleep 0.5
+    sample :drum_cymbal_closed, amp: 0.3, rate: 0.9
+    sleep 0.5
+  end
+end
+
+
+
 
 
 
