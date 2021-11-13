@@ -9,6 +9,7 @@ live_loop :melody do
       play 58, amp: 0.2
       sleep 0.25
       play 54, amp: 0.3, env_curve: 2
+
       sleep 1
     end
   end
@@ -45,7 +46,7 @@ live_loop :cymbal_verb do
   sleep 2
   with_fx :reverb, room: 1, mix: 1 do
     with_fx :panslicer do
-      sample :drum_cymbal_hard, start: 0.4
+      sample :drum_cymbal_hard, start: 0.4, amp: 0.8
     end
   end
   sleep 2
@@ -113,7 +114,7 @@ end
 wait 8
 
 live_loop :kick_808 do
-  sample :bd_808, amp: 5, rate: 1.8
+  sample :bd_808, amp: 6, rate: 1.8
   sleep 0.5
 end
 
@@ -121,20 +122,24 @@ wait 8
 
 live_loop :snare do
   sleep 2
-  with_fx :reverb, room: 0.5, amp: 0.6 do
-    sample :sn_dolf, rate: 1, amp: 0.3, finish: 0.8, pan: 0.3
+  with_fx :krush, mix: 0.2, amp: 0.5 do
+    with_fx :echo, mix: 0.2 do
+      with_fx :reverb, room: 0.2, amp: 0.6 do
+        sample :sn_dolf, rate: 1, amp: 0.3, finish: 0.8, pan: 0.3
+      end
+      sleep 4
+      with_fx :reverb, room: 0.5 do
+        sample :sn_dolf, rate: 1, amp: 0.3, finish: 0.8, pan: -0.3
+      end
+      sleep 10
+    end
   end
-  sleep 4
-  with_fx :reverb, room: 0.5 do
-    sample :sn_dolf, rate: 1, amp: 0.3, finish: 0.8, pan: -0.3
-  end
-  sleep 10
 end
 
 live_loop :snare_verb do
   sleep 12
-  with_fx :reverb, room: 1, amp: 1 do
-    sample :sn_dolf, rate: 1, amp: 0.4
+  with_fx :reverb, room: 1, amp: 1, mix: 0.6 do
+    sample :sn_dolf, rate: 1, amp: 0.2
   end
   sleep 4
 end
@@ -142,8 +147,8 @@ end
 wait 8
 
 live_loop :shakes do
-  with_fx :echo, decay: 0.5, amp: 0.5 do
-    sample :ambi_choir, rate: 10, amp: 0.4
+  with_fx :echo, decay: 0.5, amp: 0.4 do
+    sample :ambi_choir, rate: 10, amp: 0.2
     sleep 1
   end
 end
@@ -151,7 +156,7 @@ end
 wait 8
 
 live_loop :hit do
-  with_fx :krush, mix: 0.5 do
+  with_fx :krush, mix: 0.45 do
     sleep 0.5
     sample :sn_dub, amp: 0.3, rate: 0.9
     sleep 0.5
@@ -161,16 +166,9 @@ end
 wait 8
 
 live_loop :cym do
-  with_fx :krush, mix: 0.5 do
+  with_fx :krush, mix: 0.4 do
     sleep 0.5
     sample :drum_cymbal_closed, amp: 0.3, rate: 0.9
     sleep 0.5
   end
 end
-
-
-
-
-
-
-
