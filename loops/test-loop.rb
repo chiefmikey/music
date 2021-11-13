@@ -15,7 +15,7 @@ live_loop :melody do
   end
 end
 
-live_loop :basss do
+live_loop :bass do
   with_fx :lpf, cutoff: 70 do
     sample :bass_thick_c, rate: 0.5, amp: 0.6, finish: 0.5
     sleep 2
@@ -31,7 +31,7 @@ live_loop :hat do
   sleep 0.25
 end
 
-live_loop :boom do
+live_loop :bong do
   sample :bd_boom, amp: 1, rate: 1
   sleep 0.5
   with_fx :reverb, room: 0.5 do
@@ -42,21 +42,31 @@ end
 
 wait 8
 
-live_loop :rock do
+live_loop :cymbal_verb do
+  sleep 2
+  with_fx :reverb, room: 1, mix: 1 do
+    with_fx :panslicer do
+      sample :drum_cymbal_hard, start: 0.4
+    end
+  end
+  sleep 2
+end
+
+live_loop :haunted_stutter do
   with_fx :slicer, smooth: 0.5, wave: 2 do
     sample :ambi_haunted_hum, amp: 2, rate: 0.2
   end
   sleep 8
 end
 
-live_loop :donk do
+live_loop :boom do
   sleep 8
   sample :drum_bass_hard, amp: 0.8
 end
 
 wait 8
 
-live_loop :wonk do
+live_loop :tick_tick do
   with_fx :slicer do
     with_fx :bitcrusher do
       with_fx :reverb, amp: 0.8, mix: 1 do
@@ -70,7 +80,7 @@ live_loop :wonk do
   end
 end
 
-live_loop :dink do
+live_loop :crow do
   with_fx :reverb, room: 0.5, amp: 0.8 do
     sample :misc_crow, pitch: 0.1, rate: 0.5, amp: 0.5
     sleep 4
@@ -78,18 +88,23 @@ live_loop :dink do
     sleep 4
     sample :misc_crow, pitch: 0.1, rate: 0.5, amp: 0.6
     sleep 4
-    sample :misc_crow, pitch: 0.1, rate: 0.4, amp: 0.7
-    sleep 2
-    sample :misc_crow, pitch: 0.1, rate: 0.3, amp: 0.4
-    sleep 2
+    sample :misc_crow, pitch: 0.1, rate: 0.4, amp: 0.5
+    sleep 4
   end
+end
+
+
+live_loop :dark_crow do
+  sleep 30
+  sample :misc_crow, pitch: 0.1, rate: 0.3, amp: 0.4
+  sleep 2
 end
 
 wait 8
 
-live_loop :kickkk do
+live_loop :kick_808 do
   sample :bd_808, amp: 5, rate: 1.8
-  sleep 1
+  sleep 0.5
 end
 
 wait 8
@@ -97,11 +112,11 @@ wait 8
 live_loop :snare do
   sleep 2
   with_fx :reverb, room: 0.5, amp: 0.6 do
-    sample :sn_dolf, rate: 1, amp: 0.6, finish: 0.8, pan: 0.4
+    sample :sn_dolf, rate: 1, amp: 0.3, finish: 0.8, pan: 0.3
   end
   sleep 4
   with_fx :reverb, room: 0.5 do
-    sample :sn_dolf, rate: 1, amp: 0.5, finish: 0.8, pan: -0.4
+    sample :sn_dolf, rate: 1, amp: 0.3, finish: 0.8, pan: -0.3
   end
   sleep 10
 end
@@ -109,16 +124,29 @@ end
 live_loop :snare_verb do
   sleep 12
   with_fx :reverb, room: 1, amp: 1 do
-    sample :sn_dolf, rate: 1, amp: 0.6
+    sample :sn_dolf, rate: 1, amp: 0.4
   end
   sleep 4
 end
 
 wait 8
 
-live_loop :flibble do
-  with_fx :echo, decay: 0.5, amp: 0.6 do
+live_loop :shakes do
+  with_fx :echo, decay: 0.5, amp: 0.5 do
     sample :ambi_choir, rate: 10, amp: 0.4
     sleep 1
   end
 end
+
+wait 8
+
+live_loop :hit do
+  with_fx :krush, mix: 0.5 do
+    sample :sn_dub, amp: 0.5, rate: 0.9
+    sleep 1
+  end
+end
+
+
+
+
