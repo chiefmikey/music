@@ -42,16 +42,6 @@ end
 
 wait 8
 
-live_loop :cymbal_verb do
-  sleep 2
-  with_fx :reverb, room: 1, mix: 1 do
-    with_fx :panslicer do
-      sample :drum_cymbal_hard, start: 0.4, amp: 0.8
-    end
-  end
-  sleep 2
-end
-
 live_loop :haunted_stutter do
   with_fx :slicer, smooth: 0.5, wave: 2 do
     sample :ambi_haunted_hum, amp: 2, rate: 0.2
@@ -76,6 +66,16 @@ sample :drum_cymbal_soft, amp: 0.2, rate: 0.9
 sleep 1
 
 wait 4
+
+live_loop :cymbal_verb do
+  sleep 2
+  with_fx :reverb, room: 1, mix: 1 do
+    with_fx :panslicer do
+      sample :drum_cymbal_hard, start: 0.4, amp: 0.8
+    end
+  end
+  sleep 2
+end
 
 live_loop :tick_tick do
   with_fx :slicer do
@@ -172,3 +172,10 @@ live_loop :cym do
     sleep 0.5
   end
 end
+
+
+
+
+
+
+
