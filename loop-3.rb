@@ -68,7 +68,7 @@ live_loop :cymbal do
 end
 
 live_loop :creep do
-  with_fx :hpf, cutoff: 60, amp: 0.8 do
+  with_fx :hpf, cutoff: 60, amp: 0.7 do
     synth :hollow, note: 60, pan: -0.25
     sleep 1
     synth :hollow, note: 60, pan: 0.25
