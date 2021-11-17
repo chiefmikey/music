@@ -173,9 +173,9 @@ live_loop :cym do
   end
 end
 
-
-
-
-
-
-
+live_loop :hit_verb do
+  sleep 4
+  with_fx :reverb, room: 1, amp: 1, mix: 0.6 do
+    sample :sn_dub, rate: 1, amp: 0.2
+  end
+end
