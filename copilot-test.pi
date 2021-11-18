@@ -1,0 +1,27 @@
+live_loop :calm do
+  use_synth :piano
+  use_synth_defaults amp: 0.5
+  play :c4
+  sleep 0.5
+  play :e4
+  sleep 0.5
+  play :g4
+  sleep 0.5
+  play :b4
+  sleep 0.5
+  play :c5
+  sleep 0.5
+  play :e5
+  sleep 0.5
+  play :g5
+end
+
+live_loop :fast do
+  with_fx :slicer, mix: 0.8 do
+  use_synth :piano
+  use_synth_defaults amp: 0.5
+  play :c5
+  sleep 0.5
+  play :e5
+  end
+end
