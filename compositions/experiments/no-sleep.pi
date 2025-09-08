@@ -90,7 +90,7 @@ end
 live_loop :bass do
   with_fx :lpf, cutoff: 10 do
     with_fx :wobble, wave: 0, mix: 1 do
-      sample :bass_thick_c, rate: 0.50, finish: 0.40, amp: 5, env_curve: 2
+      sample :bass_thick_c, rate: 0.50, finish: 0.40, amp: 6, env_curve: 2
       sleep 1
     end
   end

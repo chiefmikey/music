@@ -1,0 +1,32 @@
+# Welcome to Sonic Pi
+
+use_bpm 120
+
+live_loop :flibble do
+  sample :bd_haus, rate: 1
+  sleep 0.5
+end
+
+live_loop :guit do
+  with_fx :echo, mix: 0.3, phase: 0.25 do
+    sample :guit_em9, rate: -0.5
+  end
+  sleep 8
+end
+
+live_loop :bass do
+  use_synth :prophet
+  play :e1, release: 8, cutoff: rrand(60, 130)
+  sleep 8
+end
+
+live_loop :lead do
+  use_synth :blade
+  play :e3, attack: 0.5, release: 8
+  sleep 8
+end
+
+live_loop :drums do
+  sample :drum_heavy_kick, rate: 0.5
+  sleep 1
+end

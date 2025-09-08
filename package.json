@@ -1,0 +1,34 @@
+{
+  "name": "music-2-my-fingers",
+  "version": "1.0.0",
+  "description": "A collection of Sonic Pi compositions and musical experiments",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write '**/*.{pi,md,json}'",
+    "format:check": "prettier --check '**/*.{pi,md,json}'"
+  },
+  "keywords": [
+    "music",
+    "sonic-pi",
+    "composition",
+    "electronic-music",
+    "live-coding",
+    "experimental-music"
+  ],
+  "author": "Mikl",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikl/music-2-my-fingers.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mikl/music-2-my-fingers/issues"
+  },
+  "homepage": "https://github.com/mikl/music-2-my-fingers#readme",
+  "devDependencies": {
+    "prettier": "^2.4.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

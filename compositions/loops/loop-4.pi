@@ -1,0 +1,13 @@
+live_loop :loop do
+  with_fx :reverb, room: 0.5 do
+sample :perc_bell
+  end
+end
+
+live_loop :loop do
+  with_fx :reverb, room: 0.5 do
+  sample :bass_hard_c, rate: 0.5
+  sleep 2
+  end
+end
+

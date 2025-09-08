@@ -1,0 +1,308 @@
+# ✨ Zelda's Lullaby - Navi Glitter Edition ✨
+# A magical, ethereal rendition with sparkling fairy effects
+
+use_bpm 75
+
+# Beautiful intro sequence
+live_loop :intro do
+  with_fx :reverb, room: 0.95, mix: 0.8 do
+    with_fx :echo, mix: 0.6, decay: 2.0 do
+      use_synth :ambi_piano
+      
+      # Gentle opening chord
+      play chord(:a2, :minor), amp: 0.2, attack: 3.0, release: 6.0
+      sleep 4.0
+      
+      # Add harmonic layer
+      play chord(:a3, :minor), amp: 0.15, attack: 2.0, release: 4.0
+      sleep 4.0
+      
+      # Sparkling entrance
+      use_synth :chipbass
+      play_pattern_timed [:c6, :e6, :g6, :c7], 
+        [0.5, 0.5, 0.5, 1.0],
+        amp: 0.3, attack: 0.01, release: 0.8
+      
+      sleep 2.0
+    end
+  end
+end
+
+# Define melody patterns for cleaner code
+define :zelda_phrase_1 do
+  play_pattern_timed [:a4, :b4, :c5, :b4, :a4, :g4, :f4, :e4], 
+    [0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 1.5],
+    amp: 0.8, attack: 0.1, release: 0.8
+end
+
+define :zelda_phrase_2 do
+  play_pattern_timed [:c5, :d5, :e5, :d5, :c5, :b4, :a4, :g4], 
+    [0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 1.5],
+    amp: 0.8, attack: 0.1, release: 0.8
+end
+
+# Main melody - Enhanced with dynamic expression
+live_loop :zelda_melody do
+  with_fx :reverb, room: 0.9, mix: 0.4, damp: 0.3 do
+    with_fx :echo, mix: 0.25, decay: 0.8, phase: 0.25 do
+      with_fx :compressor, threshold: 0.2, slope: 0.3 do
+        use_synth :piano
+        
+        # First verse
+        zelda_phrase_1
+        sleep 0.5
+        
+        # Second verse
+        zelda_phrase_1
+        sleep 0.5
+        
+        # Bridge
+        zelda_phrase_2
+        sleep 0.5
+        
+        # Final verse with crescendo
+        with_synth_defaults amp: 0.9 do
+          zelda_phrase_1
+        end
+        sleep 2.0
+      end
+    end
+  end
+end
+
+# Navi's sparkling fairy effects - Enhanced with more magical patterns
+live_loop :navi_sparkles do
+  with_fx :reverb, room: 0.95, mix: 0.5, damp: 0.2 do
+    with_fx :echo, mix: 0.4, decay: 1.2, phase: 0.125 do
+      with_fx :slicer, phase: 0.25, wave: 1, mix: 0.3 do
+        use_synth :chipbass
+        
+        # Ascending sparkle cascade
+        play_pattern_timed [:c6, :e6, :g6, :c7, :e7, :g7, :c8, :e8], 
+          [0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15],
+          amp: 0.4, attack: 0.01, release: 0.4
+        
+        sleep 0.5
+        
+        # Descending sparkle cascade
+        play_pattern_timed [:e8, :c8, :g7, :e7, :c7, :g6, :e6, :c6], 
+          [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12],
+          amp: 0.35, attack: 0.01, release: 0.3
+        
+        sleep 1.0
+        
+        # Random glitter bursts with varying intensity
+        3.times do
+          play [:g6, :c7, :e7, :g7].choose, 
+            amp: rrand(0.2, 0.5), attack: 0.01, release: rrand(0.2, 0.6)
+          sleep rrand(0.1, 0.3)
+        end
+        
+        sleep 2.0
+      end
+    end
+  end
+end
+
+# Magical arpeggios - Enhanced with dynamic patterns
+live_loop :magical_arpeggios do
+  with_fx :reverb, room: 0.8, mix: 0.4, damp: 0.3 do
+    with_fx :echo, mix: 0.3, decay: 0.8, phase: 0.5 do
+      with_fx :compressor, threshold: 0.3, slope: 0.2 do
+        use_synth :pluck
+        
+        # Define chord progression
+        chords = [
+          {chord: :a3, type: :minor, duration: 1.5},
+          {chord: :f3, type: :major, duration: 1.5},
+          {chord: :c4, type: :major, duration: 1.5},
+          {chord: :g3, type: :major, duration: 1.5}
+        ]
+        
+        # Play arpeggios with varying patterns
+        chords.each_with_index do |chord_info, i|
+          with_synth_defaults amp: 0.4 + (i * 0.05) do
+            # Ascending arpeggio
+            play chord(chord_info[:chord], chord_info[:type]), 
+              attack: 0.1, release: 0.8
+            sleep chord_info[:duration] * 0.5
+            
+            # Descending arpeggio
+            play chord(chord_info[:chord], chord_info[:type]).reverse, 
+              attack: 0.1, release: 0.8
+            sleep chord_info[:duration] * 0.5
+          end
+        end
+      end
+    end
+  end
+end
+
+# Ethereal pad - Enhanced with harmonic richness
+live_loop :ethereal_pad do
+  with_fx :reverb, room: 0.95, mix: 0.7, damp: 0.2 do
+    with_fx :echo, mix: 0.4, decay: 1.5, phase: 0.75 do
+      with_fx :compressor, threshold: 0.4, slope: 0.1 do
+        use_synth :ambi_piano
+        
+        # Define harmonic progression with extended chords
+        harmonic_progression = [
+          {chord: :a2, type: :minor, extensions: [:add9], duration: 6.0},
+          {chord: :f2, type: :major, extensions: [:add9], duration: 6.0},
+          {chord: :c3, type: :major, extensions: [:add9], duration: 6.0},
+          {chord: :g2, type: :major, extensions: [:add9], duration: 6.0}
+        ]
+        
+        harmonic_progression.each do |harmony|
+          # Base chord
+          play chord(harmony[:chord], harmony[:type]), 
+            amp: 0.25, attack: 2.5, release: 5.0
+          
+          # Add harmonic extensions
+          sleep 1.0
+          play chord(harmony[:chord], harmony[:type]) + harmony[:extensions], 
+            amp: 0.15, attack: 2.0, release: 4.0
+          
+          sleep harmony[:duration] - 1.0
+        end
+      end
+    end
+  end
+end
+
+# Navi's voice - "Hey! Listen!" - Enhanced with more personality
+live_loop :navi_voice do
+  with_fx :reverb, room: 0.9, mix: 0.5, damp: 0.3 do
+    with_fx :echo, mix: 0.4, decay: 1.0, phase: 0.125 do
+      with_fx :slicer, phase: 0.5, wave: 2, mix: 0.2 do
+        use_synth :chipbass
+        
+        # "Hey!" - ascending sparkle with excitement
+        play_pattern_timed [:c6, :e6, :g6, :c7], 
+          [0.08, 0.08, 0.08, 0.08],
+          amp: 0.6, attack: 0.01, release: 0.3
+        
+        sleep 0.2
+        
+        # "Listen!" - descending sparkle with emphasis
+        play_pattern_timed [:c7, :g6, :e6, :c6], 
+          [0.1, 0.1, 0.1, 0.1],
+          amp: 0.55, attack: 0.01, release: 0.25
+        
+        sleep 0.5
+        
+        # Occasional "Watch out!" - quick ascending burst
+        if rand < 0.3
+          play_pattern_timed [:f6, :a6, :c7, :f7], 
+            [0.05, 0.05, 0.05, 0.05],
+            amp: 0.4, attack: 0.01, release: 0.2
+        end
+        
+        sleep 6.0
+      end
+    end
+  end
+end
+
+# Magical wind chimes - Enhanced with harmonic patterns
+live_loop :wind_chimes do
+  with_fx :reverb, room: 0.95, mix: 0.6, damp: 0.4 do
+    with_fx :echo, mix: 0.3, decay: 1.5, phase: 0.25 do
+      with_fx :compressor, threshold: 0.5, slope: 0.2 do
+        use_synth :pluck
+        
+        # Define harmonic chime patterns
+        chime_patterns = [
+          [:c5, :e5, :g5, :c6],  # C major
+          [:d5, :f5, :a5, :d6],  # D minor
+          [:e5, :g5, :b5, :e6],  # E minor
+          [:f5, :a5, :c6, :f6]   # F major
+        ]
+        
+        chime_patterns.each do |pattern|
+          # Play harmonic chime sequence
+          pattern.each do |note|
+            play note, 
+              amp: rrand(0.15, 0.25), 
+              attack: 0.01, 
+              release: rrand(1.5, 2.5),
+              pan: rrand(-0.3, 0.3)
+            sleep rrand(0.3, 0.6)
+          end
+          
+          sleep rrand(2.0, 3.0)
+        end
+      end
+    end
+  end
+end
+
+# Glittering percussion - Enhanced with rhythmic variety
+live_loop :glitter_percussion do
+  with_fx :reverb, room: 0.8, mix: 0.4, damp: 0.3 do
+    with_fx :echo, mix: 0.2, decay: 0.8, phase: 0.5 do
+      with_fx :compressor, threshold: 0.6, slope: 0.3 do
+        
+        # Soft bell sequence with varying patterns
+        bell_pattern = [
+          {sample: :perc_bell, amp: 0.35, rate: 1.2, sleep: 0.4},
+          {sample: :elec_triangle, amp: 0.25, rate: 2.0, sleep: 0.2},
+          {sample: :perc_bell, amp: 0.3, rate: 1.0, sleep: 0.4},
+          {sample: :elec_triangle, amp: 0.2, rate: 1.8, sleep: 0.2},
+          {sample: :perc_bell, amp: 0.4, rate: 1.1, sleep: 0.3},
+          {sample: :elec_triangle, amp: 0.3, rate: 2.2, sleep: 0.15}
+        ]
+        
+        bell_pattern.each do |hit|
+          sample hit[:sample], 
+            amp: hit[:amp], 
+            rate: hit[:rate],
+            pan: rrand(-0.2, 0.2)
+          sleep hit[:sleep]
+        end
+        
+        sleep rrand(1.5, 2.5)
+      end
+    end
+  end
+end
+
+# Magical atmosphere - Enhanced with dynamic textures
+live_loop :magical_atmosphere do
+  with_fx :reverb, room: 0.98, mix: 0.9, damp: 0.1 do
+    with_fx :echo, mix: 0.5, decay: 2.5, phase: 1.0 do
+      with_fx :compressor, threshold: 0.3, slope: 0.1 do
+        with_fx :slicer, phase: 0.75, wave: 3, mix: 0.1 do
+          use_synth :ambi_choir
+          
+          # Dynamic atmospheric progression
+          atmospheric_notes = [
+            {note: :a3, amp: 0.12, duration: 8.0},
+            {note: :f3, amp: 0.11, duration: 8.0},
+            {note: :c4, amp: 0.13, duration: 8.0},
+            {note: :g3, amp: 0.10, duration: 8.0}
+          ]
+          
+          atmospheric_notes.each do |atmo|
+            # Main atmospheric note
+            play atmo[:note], 
+              amp: atmo[:amp], 
+              attack: 5.0, 
+              release: 10.0,
+              pan: rrand(-0.1, 0.1)
+            
+            # Add harmonic undertones
+            sleep 2.0
+            play atmo[:note] + 12, 
+              amp: atmo[:amp] * 0.6, 
+              attack: 3.0, 
+              release: 8.0,
+              pan: rrand(-0.2, 0.2)
+            
+            sleep atmo[:duration] - 2.0
+          end
+        end
+      end
+    end
+  end
+end
